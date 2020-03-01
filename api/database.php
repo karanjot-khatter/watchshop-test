@@ -66,3 +66,37 @@ function getBooks()
     closeConnection();
 }
 
+function getBooksByCategory()
+{
+    openConnection();
+    global $mysqli;
+    $query="select cat.`name` as 'category_name', bc.category_id as 'category_id', bc.book_id as 'book_id', b.`name` as 'book_name', b.link, b.content
+from categories cat
+LEFT JOIN book_categories bc ON cat.id = bc.category_id
+JOIN books b ON bc.book_id = b.id
+ORDER BY bc.category_id;
+";
+
+    $res = $mysqli->query($query);
+
+    if ($res->num_rows > 0) {
+        //empty array
+        $books = [];
+
+        while ($row = $res->fetch_assoc()) {
+            //push rows from database into the array
+            $books[] = $row;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($books);
+    }
+    else {
+        echo "0 results";
+    }
+
+    closeConnection();
+}
+
+
+

@@ -1,3 +1,4 @@
 RewriteEngine On    # Turn on the rewriting engine
 RewriteRule ^books/?$ books.php [NC,L]
 RewriteRule ^categories/?$ categories.php [NC,L]
+RewriteRule ^books/([0-9a-zA-Z_-]*)$ books.php?id=$1 [NC,L]

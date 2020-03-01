@@ -1,3 +1,9 @@
 <?php
 include_once("database.php");
-getBooks();
+if (isset($_GET['id']))
+{
+    getBooksById();
+}
+else {
+    getBooks();
+}

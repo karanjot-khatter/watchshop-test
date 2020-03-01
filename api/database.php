@@ -98,5 +98,32 @@ ORDER BY bc.category_id;
     closeConnection();
 }
 
+function getBooksById()
+{
+    openConnection();
+    global $mysqli;
+    $bookId = $_GET['id'];
+    $query="select * from books WHERE id=$bookId";
+    $res = $mysqli->query($query);
+    if ($res->num_rows > 0) {
+        //empty array
+        $books = [];
+
+        while ($row = $res->fetch_assoc()) {
+            //push rows from database into the array
+            $books[] = $row;
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($books);
+    }
+    else {
+        echo "0 results";
+    }
+
+    closeConnection();
+
+}
+
 
 

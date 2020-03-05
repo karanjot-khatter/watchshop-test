@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['book_id']) && $_POST['book_id']!="") {
     $book_id = $_POST['book_id'];
-    $url = "http://localhost/api/books?id=".$book_id;
+    $url = "http://librarykaranjotkhatters.co.uk/api/books.php?id=".$book_id;
 
     $client = curl_init($url);
     curl_setopt($client,CURLOPT_RETURNTRANSFER,true);

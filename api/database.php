@@ -1,10 +1,5 @@
 <?php
-
-define('HST', 'localhost');
-define('USR', 'root');
-define('PSW', 'root');
-define('DBN', 'watchshop');
-
+include_once("../../private/config.php");
 $mysqli = null;
 
 
@@ -14,7 +9,7 @@ function openConnection()
 {
     global $mysqli;
     //we connect to the host and select db in one step by creating instance of mysqli
-    $mysqli = new mysqli(HST, USR, PSW, DBN);
+    $mysqli = new mysqli(HST,USR,PSW, DBN);
 
     if (!isset($mysqli->connect_error)) {
         $dbok = true;

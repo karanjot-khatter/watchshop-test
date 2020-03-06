@@ -12,6 +12,7 @@ function openConnection()
     $mysqli = new mysqli(HST,USR,PSW, DBN);
 
     if (!isset($mysqli->connect_error)) {
+	$mysqli->set_charset("utf8");
         $dbok = true;
     } else {
         $dbok = false;
